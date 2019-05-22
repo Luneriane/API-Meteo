@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API Météo</title>
+</head>
+<body>
+    <p>
+        API demande un lien
+        dans la console, faire un fetch du lien. Le mien est d'utiliser axios.
+        faire des console.log() !
+        
+        faire un input qui affiche :
+            _ l'heure
+            _ la température
+            _ l'humidité
+            _ le lieu
+            _ le temps (ensoleillé, nuageux, pluvieux)
+            _ une icone illustrant le temps
+        
+            Si on a finit, aller cherche l'actualité de cette ville avec une autre API
+    </p>
+    <section id="weather">
+        <fieldset>
+            <legend id="nameLabel">Ville :</legend>
+            <input id="nameInput" type="text" value="Paris" required>
+            <button id="buttonSubmit" onclick="requete()">
+                Envoyer
+            </button>
+        </fieldset>
+    </section>
+    <section id="app">
+        <article>
+            <h3>Heure :</h3>
+            <p id="heure"></p>
+        </article>
+        <article>
+            <h3>Température :</h3>
+            <p id="temperature"></p>
+        </article>
+        <article>
+            <h3>Humidité :</h3>
+            <p id="humidite"></p>
+        </article>
+        <article>
+            <h3>Lieu :</h3>
+            <p id="lieu"></p>
+        </article>
+        <article>
+            <h3>Temps :</h3>
+            <p id="temps"></p>
+        </article>
+            _ l'heure
+            _ la température
+            _ l'humidité
+            _ le lieu
+            _ le temps (ensoleillé, nuageux, pluvieux)
+            _ une icone illustrant le temps
+    </section><script src="./javascript.js"></script>
+</body>
+</html>
+
+
