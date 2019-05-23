@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width:100%;
+    font-family: 'Poppins', sans-serif;
+    font-size:1.5vw;
+    text-align:center;
+    background-image: url("../media/ciel\ dégagé.jpg");
+}
+
+main {
+    margin: 10vh 10vw;
+    padding:3%;
+    border:1px solid black;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow:3px 3px 30px black;
+
+    fieldset {
+        display: inline;
+        margin-left: 50%;
+        transform: translate(-50%);
+        padding: 0.5em 1em;
+
+        legend{
+            padding: 0 0.5em;
+            text-shadow:1px 1px 3px white;
+        }
+    
+        button{
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            background-color: rgba(0,0,0,0.25);
+        }
+    }
+    
+    #app {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding-top: 2em;
+    }
+}
+a{
+    font-weight:bold;
+    color:rgb(0, 153, 153);
+    text-decoration:none;
+    &:hover{
+        text-decoration:underline;
+    }
+}

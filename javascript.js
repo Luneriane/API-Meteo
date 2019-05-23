@@ -6,30 +6,64 @@ const temps = document.querySelector('#temps');
 const icon = document.querySelector('#icon');
 var date = new Date();
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Paris&appid=4bf558d6703a571b73fb51bc44fa5f70&units=metric&lang=fr`)
-    .then(res => res.json())
+const myNews = document.querySelector('#news');
+const article = "<article></article>";
+const title = "<h3></h3>";
+const resume = "<p></p>";
+const link = "<a href=''></a>";
+const source = "<p></p>";
+
+fetch(`https://api.apixu.com/v1/current.json?key=25aff8fbdd17436eb17103421192305&q=Paris&lang=fr`)
+    .then(response => response.json())
     .then(data => {
         console.log(data);
-        heure.textContent = (date.getHours()+data.timezone/60/60)-2 + ":" +date.getMinutes() +":" + date.getSeconds();
-        temperature.textContent = data.main.temp;
-        humidite.textContent = data.main.humidity;
-        lieu.textContent = data.name;
-        temps.textContent = data.weather[0].description;
-        icon.setAttribute('src', "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
-    });
+        heure.textContent = data.location.localtime;
+        temperature.textContent = data.current.temp_c + "°C";
+        humidite.textContent = data.current.humidity + "%";
+        lieu.textContent = data.location.name;
+        temps.textContent = data.current.condition.text;
+        icon.setAttribute('src', data.current.condition.icon);
+    })
+    
+fetch('https://newsapi.org/v2/top-headlines?apiKey=75f72e9259014655bfd118635173c497&q=Paris')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        for (var i; i <= data.articles.length; i++){
+            var article = "<article></article>";
+            var title = "<h3>" + data.articles[i].title + "</h3>";
+            var resume = "<p>" + data.articles[i].description + "</p>";
+            var link = "<a>" + data.articles[i].url + "</a>";
+            var source = "<p>" + data.articles[i].source.name + "</p>";
+
+            
+            link.setAttribute('src', data.articles[i].url);
+            source.textContent = data.articles[i].source.name;
+            link.innerHTML = source;
+
+            console.log(myNews);
+
+            const myNews = document.querySelector('#news');
+const article = "<article></article>";
+const title = "<h3></h3>";
+const resume = "<p></p>";
+const link = "<a></a>";
+const source = "<p></p>";
+        }
+    })
 
 function requete(){
     var cityName=document.getElementById("nameInput").value;
     console.log(cityName); 
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=4bf558d6703a571b73fb51bc44fa5f70&units=metric&lang=fr`)
+    fetch(`https://api.apixu.com/v1/current.json?key=25aff8fbdd17436eb17103421192305&q=${cityName}&lang=fr`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            heure.textContent = (date.getHours()+data.timezone/60/60)-2 + ":" +date.getMinutes() +":" + date.getSeconds();
-            temperature.textContent = data.main.temp;
-            humidite.textContent = data.main.humidity;
-            lieu.textContent = data.name;
-            temps.textContent = data.weather[0].description;
-            icon.setAttribute('src', "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+            heure.textContent = data.location.localtime;
+            temperature.textContent = data.current.temp_c + "°C";
+            humidite.textContent = data.current.humidity + "%";
+            lieu.textContent = data.location.name;
+            temps.textContent = data.current.condition.text;
+            icon.setAttribute('src', data.current.condition.icon);
         });
 }
