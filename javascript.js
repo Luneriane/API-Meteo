@@ -6,12 +6,9 @@ const temps = document.querySelector('#temps');
 const icon = document.querySelector('#icon');
 var date = new Date();
 
-const myNews = document.querySelector('#news');
-const article = "<article></article>";
-const title = "<h3></h3>";
-const resume = "<p></p>";
-const link = "<a href=''></a>";
-const source = "<p></p>";
+const sectionNews = document.querySelector('#news');
+const objectArticle = "<h3></h3><p></p><a href=''></a>";
+var newArticle = document.createElement("article");
 
 fetch(`https://api.apixu.com/v1/current.json?key=25aff8fbdd17436eb17103421192305&q=Paris&lang=fr`)
     .then(response => response.json())
@@ -29,28 +26,27 @@ fetch('https://newsapi.org/v2/top-headlines?apiKey=75f72e9259014655bfd118635173c
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        for (var i; i <= data.articles.length; i++){
-            var article = "<article></article>";
-            var title = "<h3>" + data.articles[i].title + "</h3>";
-            var resume = "<p>" + data.articles[i].description + "</p>";
-            var link = "<a>" + data.articles[i].url + "</a>";
-            var source = "<p>" + data.articles[i].source.name + "</p>";
-
-            
-            link.setAttribute('src', data.articles[i].url);
-            source.textContent = data.articles[i].source.name;
-            link.innerHTML = source;
-
-            console.log(myNews);
-
-            const myNews = document.querySelector('#news');
-const article = "<article></article>";
-const title = "<h3></h3>";
-const resume = "<p></p>";
-const link = "<a></a>";
-const source = "<p></p>";
+        
+        for (let o in data.articles) {
+            if (o < 3){
+                console.log("blue");
+                console.log(data.articles[o].source.name);
+                sectionNews.append(newArticle);
+                const article = document.querySelector("#news:last-child");
+                article.innerHTML = objectArticle;
+                const title = document.querySelector('#news article h3:last-child');
+                title.textContent = data.articles[o].title;
+                const resume = document.querySelector('#news p');
+                resume.textContent = data.articles[o].description;
+                const link = document.querySelector('#news a');
+                link.textContent = data.articles[o].source.name;
+                link.setAttribute('href', data.articles[o].url);
+            }else{
+                return
+            }
         }
     })
+
 
 function requete(){
     var cityName=document.getElementById("nameInput").value;
