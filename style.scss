@@ -9,9 +9,8 @@
 body{
     width:100%;
     font-family: 'Poppins', sans-serif;
-    font-size:1.5vw;
-    text-align:center;
-    background-image: url("../media/ciel\ dégagé.jpg");
+    background-image: url("./media/ciel\ dégagé.jpg");
+    background-size: cover;
 }
 
 main {
@@ -40,17 +39,51 @@ main {
     }
     
     #app {
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
-    padding-top: 2em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: baseline;
+        padding-top: 2em;
+
+        article {
+            min-width: 5em;
+        }
     }
-}
-a{
-    font-weight:bold;
-    color:rgb(0, 153, 153);
-    text-decoration:none;
-    &:hover{
-        text-decoration:underline;
+
+    h2 {
+        width: 100%;
+        margin-bottom: 1em;
+        text-align: center;
+    }
+
+    #news {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: baseline;
+
+        article {
+            min-width: 10em;
+            width: 30%;
+            box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+            border-radius: 0.5em;
+            padding: 0.5em;
+            margin-bottom: 1em;
+
+            h3 {
+                margin-bottom: 0.5em;
+            }
+            a {
+                display: block;
+                text-align: right;
+                font-weight:bold;
+                color:darkblue;
+                text-decoration:none;
+    
+                &:hover{
+                    text-decoration:underline;
+                }
+            }
+        }
     }
 }
